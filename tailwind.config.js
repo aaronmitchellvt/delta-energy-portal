@@ -4,6 +4,7 @@ module.exports = {
     preflight: false,
   },
   content: [
+    "./src/app/*",
     "./src/app/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}", // Note the addition of the `app` directory.
     "./pages/**/*.{js,ts,jsx,tsx}",
