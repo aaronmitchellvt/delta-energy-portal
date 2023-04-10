@@ -1,7 +1,13 @@
-import { AppBar, Toolbar, IconButton, Button, Typography } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
-
+// import { AppBar, Toolbar, IconButton, Button, Typography } from "@mui/material";
+// import MenuIcon from '@mui/icons-material/Menu';
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+
+const poppins = Poppins({
+  weight: ['400', '600'],
+  subsets: ['latin']
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -15,7 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={poppins.className}>
+        <Navbar />
+        {children}
+      </body>
+    </html>
+  );
+}
+
         {/* <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -33,8 +46,3 @@ export default function RootLayout({
             <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar> */}
-        {children}
-      </body>
-    </html>
-  );
-}
