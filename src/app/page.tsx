@@ -18,8 +18,9 @@ export default function Home() {
         >
           <h1>Using Material UI with Next.js 13</h1>
           <Stack direction="row" columnGap={1}>
-            <Button color="success" variant="contained"><Link href="/register">Register</Link></Button>
-            <Button variant="outlined"><Link href="/login">Login</Link></Button>
+            {/* <Button color="success" variant="contained"><Link href="/register">Register</Link></Button>
+            <Button variant="outlined"><Link href="/login">Login</Link></Button> */}
+            <Button variant="outlined"><Link href="/properties">Properties</Link></Button>
           </Stack>
         </Grid>
       </div>

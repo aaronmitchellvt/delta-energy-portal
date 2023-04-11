@@ -8,6 +8,7 @@ export default function Properties() {
     <div className="h-full">
       {/* <Navbar /> */}
       <main className="h-full flex">
+        {/* @ts-expect-error Server Component */}
         <Sidebar />
         <div className="p-3 flex items-center">
           <p className="mr-2">Select a property or</p>

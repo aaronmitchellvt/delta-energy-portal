@@ -1,23 +1,15 @@
+import axios from "axios";
 import Link from "next/link";
 import React from "react";
 
 const fetchProperties = async () => {
   //fetch the properties
+  const { data } = await axios.get("http://localhost:3000/api/properties");
+  return data;
 };
 
-const Sidebar = () => {
-  // const properties = fetchProperties();
-  const properties = [
-    {
-      title: "Smiths",
-    },
-    {
-      title: "Jones",
-    },
-    {
-      title: "Mitchells",
-    },
-  ];
+const Sidebar = async () => {
+  const fetchedProperties = await fetchProperties();
 
   return (
     <div className="h-full w-64 border-r bg-gray-200">
@@ -27,14 +19,14 @@ const Sidebar = () => {
 
       <hr />
 
-      {properties.length === 0 ? (
+      {fetchedProperties.propertiesList.length === 0 ? (
         <p className="p-4">No spaces yet</p>
       ) : (
         <ol>
-          {properties.map((property) => (
-            <Link key={property.title} href={`/properties/${property.title}`}>
-              <li key={property.title} className="text-black block border-b p-4 text-xl">
-                🏠 {property.title}
+          {fetchedProperties.propertiesList.map((property: any) => (
+            <Link key={property.id} href={`/properties/${property.id}`}>
+              <li key={property.propClientName} className="text-black block border-b p-4 text-xl">
+                🏠 {property.propClientName}
               </li>
             </Link>
           ))}
