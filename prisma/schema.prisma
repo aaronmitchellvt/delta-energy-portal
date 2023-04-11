@@ -15,3 +15,15 @@ model User {
   email    String @unique
   password String
 }
+
+model Property {
+  id                   String @id @default(cuid())
+  propAddress          String
+  propClientName       String
+  propClientPhone      String
+  propSqFt             Int
+  propHeight           Int
+  propNumOccupants     Int
+  propNumWindows       Int
+  propNumExteriorDoors Int
+}
