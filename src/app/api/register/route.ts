@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import prisma from "../../../../lib/prisma";
+import { db } from '../../../../lib/prisma';
 
 export async function POST(request: Request) {
   const { email, password } = await request.json();
@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
   // validate that there is not already a user with this email
   
-  const user = await prisma.user.create({
+  const user = await db.user.create({
     data: {
       email,
       password
