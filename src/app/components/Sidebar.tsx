@@ -28,7 +28,7 @@ const Sidebar = () => {
 
       <hr />
 
-      {loading && <>Loading...</>}
+      {loading && <div className="p-3">Loading...</div>}
       {projects.length === 0 && !loading && (
         <p className="p-4">No projects yet</p>
       )}
