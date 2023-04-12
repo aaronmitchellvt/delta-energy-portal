@@ -15,7 +15,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="min-h-full w-64 border-r bg-gray-200">
+    <div className="min-h-full w-60 border-r bg-gray-200">
       <Link href="/properties/new">
         <p className="block p-4 text-xl text-blue-500">+ New Property</p>
       </Link>
