@@ -1,15 +1,18 @@
+"use client";
 import axios from "axios";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const fetchProperties = async () => {
-  //fetch the properties
-  const { data } = await axios.get("http://localhost:3000/api/properties");
-  return data;
-};
-
-const Sidebar = async () => {
-  const fetchedProperties = await fetchProperties();
+const Sidebar = () => {
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data } = await axios.get("http://localhost:3000/api/properties");
+      setProjects(data.projectList);
+      return data;
+    };
+    fetchProjects();
+  }, []);
 
   return (
     <div className="min-h-full w-64 border-r bg-gray-200">
@@ -19,11 +22,11 @@ const Sidebar = async () => {
 
       <hr />
 
-      {fetchedProperties.projectList.length === 0 ? (
+      {projects.length === 0 ? (
         <p className="p-4">No projects yet</p>
       ) : (
         <ol>
-          {fetchedProperties.projectList.map((project: any) => (
+          {projects.map((project: any) => (
             <Link key={project.id} href={`/properties/${project.id}`}>
               <li key={project.projName} className="text-black block border-b p-4 text-xl">
                 🏠 {project.projName}

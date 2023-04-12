@@ -5,7 +5,6 @@ export default function Properties() {
   return (
       <main className="min-h-screen flex">
         {/* <div className="h-full"> */}
-          {/* @ts-expect-error Server Component */}
           <Sidebar />
         {/* </div> */}
         <div className="p-3 flex items-center">
