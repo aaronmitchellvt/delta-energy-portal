@@ -3,8 +3,10 @@ import RecHeatPumps from "@/app/components/RecHeatPumps";
 import axios from "axios";
 import React from "react";
 
+const devUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 const fetchProject = async (id: string) => {
-  const { data } = await axios.post(`http://localhost:3000/api/property`, {
+  const { data } = await axios.post(`${devUrl}/api/property`, {
     projectId: id,
   });
   return data;

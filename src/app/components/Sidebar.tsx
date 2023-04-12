@@ -3,11 +3,15 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
+const devUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const Sidebar = () => {
+  console.log("URL:: ", devUrl);
+
+
   const [projects, setProjects] = useState([]);
   useEffect(() => {
     const fetchProjects = async () => {
-      const { data } = await axios.get("http://localhost:3000/api/properties");
+      const { data } = await axios.get(`${devUrl}/api/properties`);
       setProjects(data.projectList);
       return data;
     };
