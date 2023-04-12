@@ -7,11 +7,13 @@ const devUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const Sidebar = () => {
   console.log("URL:: ", devUrl);
 
-
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchProjects = async () => {
       const { data } = await axios.get(`${devUrl}/api/properties`);
+      setLoading(false);
       setProjects(data.projectList);
       return data;
     };
@@ -26,13 +28,19 @@ const Sidebar = () => {
 
       <hr />
 
-      {projects.length === 0 ? (
+      {loading && <>Loading...</>}
+      {projects.length === 0 && !loading && (
         <p className="p-4">No projects yet</p>
-      ) : (
+      )}
+
+      {!loading && projects.length > 0 && (
         <ol>
           {projects.map((project: any) => (
             <Link key={project.id} href={`/properties/${project.id}`}>
-              <li key={project.projName} className="text-black block border-b p-4 text-xl">
+              <li
+                key={project.projName}
+                className="text-black block border-b p-4 text-xl"
+              >
                 🏠 {project.projName}
               </li>
             </Link>
