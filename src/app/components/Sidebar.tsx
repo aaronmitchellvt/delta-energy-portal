@@ -12,21 +12,21 @@ const Sidebar = async () => {
   const fetchedProperties = await fetchProperties();
 
   return (
-    <div className="h-full w-64 border-r bg-gray-200">
+    <div className="min-h-full w-64 border-r bg-gray-200">
       <Link href="/properties/new">
         <p className="block p-4 text-xl text-blue-500">+ New Property</p>
       </Link>
 
       <hr />
 
-      {fetchedProperties.propertiesList.length === 0 ? (
-        <p className="p-4">No spaces yet</p>
+      {fetchedProperties.projectList.length === 0 ? (
+        <p className="p-4">No projects yet</p>
       ) : (
         <ol>
-          {fetchedProperties.propertiesList.map((property: any) => (
-            <Link key={property.id} href={`/properties/${property.id}`}>
-              <li key={property.propClientName} className="text-black block border-b p-4 text-xl">
-                🏠 {property.propClientName}
+          {fetchedProperties.projectList.map((project: any) => (
+            <Link key={project.id} href={`/properties/${project.id}`}>
+              <li key={project.projName} className="text-black block border-b p-4 text-xl">
+                🏠 {project.projName}
               </li>
             </Link>
           ))}

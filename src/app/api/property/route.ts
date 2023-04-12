@@ -68,16 +68,16 @@ const heatPumps = [
 ];
 
 export async function POST(request: Request) {
-  const { propertyId } = await request.json();
-  const property = await db.property.findUnique({
+  const { projectId } = await request.json();
+  const project = await db.project.findUnique({
     where: {
-      id: propertyId,
+      id: projectId,
     },
   });
-  const cubicFeetLoad = property?.propHeight! * property?.propSqFt!;
-  const occupantLoad = property?.propNumOccupants! * 100;
-  const doorLoad = property?.propNumExteriorDoors! * 1000;
-  const windowLoad = property?.propNumWindows! * 100;
+  const cubicFeetLoad = project?.projHeight! * project?.projSqFt!;
+  const occupantLoad = project?.projNumOccupants! * 100;
+  const doorLoad = project?.projNumExteriorDoors! * 1000;
+  const windowLoad = project?.projNumWindows! * 100;
 
   const estimatedHVACLoad =
     cubicFeetLoad + occupantLoad + doorLoad + windowLoad;
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
   // replace with getRecHeatPumps fn, implement logic
   const reccommendedHeatPumps = [heatPumps[0], heatPumps[1], heatPumps[2]];
   return NextResponse.json({
-    property: property,
+    project: project,
     estimatedLoad: estimatedHVACLoad,
     reccommendedHeatPumps: reccommendedHeatPumps,
     isOk: true,
