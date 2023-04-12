@@ -1,24 +1,23 @@
+import PropertyDetailsCard from "@/app/components/PropertyDetailsCard";
 import RecHeatPumps from "@/app/components/RecHeatPumps";
 import axios from "axios";
 import React from "react";
 
-const fetchProperty = async (id: string) => {
-  //fetch the properties
+const fetchProject = async (id: string) => {
   const { data } = await axios.post(`http://localhost:3000/api/property`, {
-    propertyId: id,
+    projectId: id,
   });
   return data;
 };
 
 const page = async ({ params }) => {
-  const { property, estimatedLoad, reccommendedHeatPumps } =
-    await fetchProperty(params.propertyId);
+  const { project, estimatedLoad, reccommendedHeatPumps } =
+    await fetchProject(params.projectId);
 
   return (
     <>
-      <div>
-        <h1>{property.propClientName}'s Property</h1>
-        <h2>Estimated HVAC Load: {estimatedLoad}</h2>
+      <div className="w-1/4">
+        <PropertyDetailsCard details={project} estimatedLoad={estimatedLoad} />
       </div>
 
       <hr />

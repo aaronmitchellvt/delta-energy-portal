@@ -1,30 +1,37 @@
-import { NextResponse } from 'next/server';
-import { db } from '../../../../lib/prisma';
+import { NextResponse } from "next/server";
+import { db } from "../../../../lib/prisma";
 
 export async function GET(request: Request) {
-  const properties = await db.property.findMany();
-  return NextResponse.json({ propertiesList: properties, isOk: true})
+  const projects = await db.project.findMany();
+  return NextResponse.json({ projectList: projects, isOk: true });
 }
 
-
 export async function POST(request: Request) {
-  const { propAddress, propClientName, propClientPhone, propSqFt,
-  propHeight, propNumOccupants, propNumWindows, propNumExteriorDoors } = await request.json();
-  console.log("Body: ", propAddress);
+  const {
+    projName,
+    projAddress,
+    projState,
+    projCity,
+    projSqFt,
+    projHeight,
+    projNumOccupants,
+    projNumWindows,
+    projNumExteriorDoors,
+  } = await request.json();
 
-  const property = await db.property.create({
+  const project = await db.project.create({
     data: {
-      propAddress,
-      propClientName,
-      propClientPhone,
-      propSqFt,
-      propHeight,
-      propNumOccupants,
-      propNumWindows,
-      propNumExteriorDoors
-    }
-  })
-  console.log("Property: ", property);
+      projName,
+      projAddress,
+      projState,
+      projCity,
+      projSqFt,
+      projHeight,
+      projNumOccupants,
+      projNumWindows,
+      projNumExteriorDoors,
+    },
+  });
 
-  return NextResponse.json({ addedProperty: property, isOk: true})
+  return NextResponse.json({ addedProject: project, isOk: true });
 }

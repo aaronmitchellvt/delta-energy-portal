@@ -32,8 +32,8 @@ const RecHeatPumps: React.FC<any> = (props) => {
                 height={125}
               />
               <h3 className="text-xl">{pump.name}</h3>
-              <p className="text-lg font-semibold">${pump.cost.toString()}</p>
-              <p className="text-lg font-semibold">{pump.estLoadHandled.toString()} BTUs</p>
+              <p className="text-md font-semibold">${pump.cost.toString()}</p>
+              <p className="text-md font-semibold">{pump.estLoadHandled.toString()} BTU Rated</p>
               <Link href={pump.link}>Visit</Link>
             </div>
           );

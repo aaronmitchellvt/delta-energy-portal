@@ -16,14 +16,15 @@ model User {
   password String
 }
 
-model Property {
+model Project {
   id                   String @id @default(cuid())
-  propAddress          String
-  propClientName       String
-  propClientPhone      String
-  propSqFt             Int
-  propHeight           Int
-  propNumOccupants     Int
-  propNumWindows       Int
-  propNumExteriorDoors Int
+  projName             String
+  projAddress          String
+  projCity             String
+  projState            String
+  projSqFt             Int
+  projHeight           Int
+  projNumOccupants     Int
+  projNumWindows       Int
+  projNumExteriorDoors Int
 }
