@@ -10,9 +10,9 @@ const fetchProject = async (id: string) => {
   return data;
 };
 
-const page = async ({ params }) => {
+const page = async (props: any) => {
   const { project, estimatedLoad, reccommendedHeatPumps } =
-    await fetchProject(params.projectId);
+    await fetchProject(props.params.projectId);
 
   return (
     <>
