@@ -14,16 +14,17 @@ interface Pump {
 
 const RecHeatPumps: React.FC<any> = (props) => {
   const pumps = props.reccommendedHeatPumps;
+  const selectedPump = props.selectedPump
 
   return (
-    <div className="p-3">
-      <h1>Reccomended pumps</h1>
+    <div className="p-3 h-96">
+      <h1 className="ml-3">Reccomended pumps</h1>
       <div className="flex flex-row ">
-        {pumps.map((pump: Pump) => {
+        {pumps.map((pump: Pump, index: number) => {
           return (
             <div
               key={pump.link.toString()}
-              className="w-1/4 rounded-md shadow-xl p-3 m-3"
+              className={`w-1/3 rounded-md p-3 m-3 ${selectedPump === index ? `bg-green-100 shadow-sm` : `shadow-xl`}`}
             >
               <Image
                 src={pump.imgUrl}
@@ -44,21 +45,3 @@ const RecHeatPumps: React.FC<any> = (props) => {
 };
 
 export default RecHeatPumps;
-
-const PumpCard = (
-  name: string,
-  estLoad: Number,
-  cost: Number,
-  url: string,
-  imgUrl: string
-) => {
-  return (
-    <div className="w-1/3 rounded-md shadow-md p-3">
-      <Image src={imgUrl} alt="Picture of heat pump" width={75} height={75} />
-      <h3>{name}</h3>
-      <p>$ {cost.toString()}</p>
-      <p>{estLoad.toString()} BTUs</p>
-      <Link href={url}>Visit</Link>
-    </div>
-  );
-};

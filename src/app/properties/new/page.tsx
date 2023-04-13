@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { TextField, Grid, Button, Box } from "@mui/material";
-import CircularProgress from "@mui/material/CircularProgress";
+import { TextField, Button } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
@@ -61,9 +60,7 @@ const New = () => {
   return (
     <div className="p-3 m-3 w-full">
       {loading ? (
-        <Box display="flex" justifyContent="center" alignContent="center">
-          <CircularProgress />
-        </Box>
+        <div className="p-3 m-2">Loading...</div>
       ) : (
         <form onSubmit={handleSubmit} className="p-4 w-1/3">
             {!completeForm && (

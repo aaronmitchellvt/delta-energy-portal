@@ -1,3 +1,4 @@
+import HeatPumpContainer from "@/app/components/HeatPumpContainer";
 import PropertyDetailsCard from "@/app/components/PropertyDetailsCard";
 import RecHeatPumps from "@/app/components/RecHeatPumps";
 import axios from "axios";
@@ -13,18 +14,18 @@ const fetchProject = async (id: string) => {
 };
 
 const page = async (props: any) => {
-  const { project, estimatedLoad, reccommendedHeatPumps } =
-    await fetchProject(props.params.projectId);
+  const { project, estimatedLoad, reccommendedHeatPumps } = await fetchProject(
+    props.params.projectId
+  );
 
   return (
-    <>
-      <div className="w-1/4">
-        <PropertyDetailsCard details={project} estimatedLoad={estimatedLoad} />
-      </div>
+    <div className="px-6">
 
-      <hr />
-      <RecHeatPumps reccommendedHeatPumps={reccommendedHeatPumps} />
-    </>
+
+      <HeatPumpContainer pumps={reccommendedHeatPumps} project={project} estLoad={estimatedLoad} />
+
+      {/* <hr /> */}
+    </div>
   );
 };
 
