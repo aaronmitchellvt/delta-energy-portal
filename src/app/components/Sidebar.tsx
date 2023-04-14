@@ -21,7 +21,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="min-h-full w-60 border-r bg-gray-200">
+    <div className="min-h-full w-72 border-r bg-gray-200">
       <Link href="/properties/new">
         <p className="block p-4 text-xl text-blue-500">+ New Property</p>
       </Link>
@@ -33,20 +33,26 @@ const Sidebar = () => {
         <p className="p-4">No projects yet</p>
       )}
 
-      {!loading && projects.length > 0 && (
-        <ol>
-          {projects.map((project: any) => (
-            <Link key={project.id} href={`/properties/${project.id}`}>
-              <li
-                key={project.projName}
-                className="text-black block border-b p-4 text-xl"
+      <div className="flex flex-col justify-items-start">
+        {!loading && projects.length > 0 && (
+          <ul>
+            {projects.map((project: any) => (
+              <Link
+                className="no-underline my-2"
+                key={project.id}
+                href={`/properties/${project.id}`}
               >
-                🏠 {project.projName}
-              </li>
-            </Link>
-          ))}
-        </ol>
-      )}
+                <li
+                  key={project.projName}
+                  className="text-black block border-b p-2 text-xl"
+                >
+                  🏠 {project.projName}
+                </li>
+              </Link>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };

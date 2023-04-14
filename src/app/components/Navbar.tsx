@@ -13,7 +13,7 @@ const Navbar = () => {
       <Link className="text-white no-underline" href="/properties">
         <h1 className="text-3xl font-bold">Delta Energy</h1>
       </Link>
-      <p>email@delta.com</p>
+      <p className="text-lg">email@delta.com</p>
       <Button label="Logout" />
     </div>
   );
