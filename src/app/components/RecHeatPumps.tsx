@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from 'primereact/button';
 
 interface Pump {
   name: String;
@@ -14,7 +16,7 @@ interface Pump {
 
 const RecHeatPumps: React.FC<any> = (props) => {
   const pumps = props.reccommendedHeatPumps;
-  const selectedPump = props.selectedPump
+  const selectedPump = props.selectedPump;
 
   return (
     <div className="p-3 h-96">
@@ -24,18 +26,36 @@ const RecHeatPumps: React.FC<any> = (props) => {
           return (
             <div
               key={pump.link.toString()}
-              className={`w-1/3 rounded-md p-3 m-3 ${selectedPump === index ? `bg-green-100 shadow-sm` : `shadow-xl`}`}
+              className={`w-1/3 rounded-md p-3 m-3 ${
+                selectedPump === index ? `shadow-xl` : `shadow-xl`
+              }`}
             >
-              <Image
-                src={pump.imgUrl}
-                alt="Picture of heat pump"
-                width={125}
-                height={125}
-              />
+              <div className="w-full flex justify-between">
+                <Image
+                  src={pump.imgUrl}
+                  alt="Picture of heat pump"
+                  width={125}
+                  height={125}
+                />
+                <p className="font-semibold text-xl pr-4">{index + 1}</p>
+              </div>
+
               <h3 className="text-xl">{pump.name}</h3>
               <p className="text-md font-semibold">${pump.cost.toString()}</p>
-              <p className="text-md font-semibold">{pump.estLoadHandled.toString()} BTU Rated</p>
-              <Link href={pump.link}>Visit</Link>
+              <p className="text-md font-semibold">
+                {pump.estLoadHandled.toString()} BTU Rated
+              </p>
+
+              <div className="flex justify-between items-center">
+                <Button
+                  label={selectedPump === index ? "Selected" : "Select"}
+                  severity={selectedPump === index ? "success" : "secondary"}
+                  onClick={() => {
+                    props.selectPump(index);
+                  }}
+                />
+                <Link className="pr-4" href={pump.link}>Visit</Link>
+              </div>
             </div>
           );
         })}
