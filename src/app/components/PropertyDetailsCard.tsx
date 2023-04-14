@@ -25,10 +25,10 @@ const PropertyDetailsCard: React.FC<any> = (props) => {
         <p className="text-xl">
           # Exterior Doors - {details.projNumExteriorDoors}
         </p>
-        <p className="font-semibold">Estimated HVAC Load - {estLoad}</p>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <p className="text-lg font-semibold">Estimated HVAC Load - {estLoad} BTU</p>
+        {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Edit Project
-        </button>
+        </button> */}
       </div>
     </div>
   );

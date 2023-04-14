@@ -1,5 +1,9 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";     
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";  
+
 import Navbar from "./components/Navbar";
 
 const poppins = Poppins({
