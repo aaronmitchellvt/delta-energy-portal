@@ -1,2 +1,7 @@
 project url https://jgcphxizmtasumellwci.supabase.co
 api key anon eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnY3BoeGl6bXRhc3VtZWxsd2NpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEzMTI5NDgsImV4cCI6MTk5Njg4ODk0OH0._4qt1BXF-ukSALrlRtwOdS39TWgs6xspT5OTUYWplzQ
+
+- TAKE AWAY PRIMARY HEAT SOURCE
+- calculate total BTU output per year based on user's primary heat/cool type (shown in dropdown).
+- Both fuel and electric usage - current
+- saving screen
